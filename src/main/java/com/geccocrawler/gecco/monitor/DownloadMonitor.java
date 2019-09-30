@@ -13,12 +13,12 @@ import org.apache.commons.logging.LogFactory;
 
 public class DownloadMonitor {
 	
-	private static Log log = LogFactory.getLog(DownloadMonitor.class);
+	private static final Log log = LogFactory.getLog(DownloadMonitor.class);
 	
-	private static Map<String, DownloadStatistics> statistics = new ConcurrentHashMap<String, DownloadStatistics>();
+	private static final Map<String, DownloadStatistics> statistics = new ConcurrentHashMap<String, DownloadStatistics>();
 	
 	//不公平重入锁,用来控制host的创建
-	private static Lock lock = new ReentrantLock();
+	private static final Lock lock = new ReentrantLock();
 	
 	public static Set<String> getHosts() {
 		return statistics.keySet();
@@ -55,8 +55,7 @@ public class DownloadMonitor {
 	private static String getHost(String url) {
 		try {
 			URL requestUrl = new URL(url);
-			String host = requestUrl.getHost();
-			return host;
+			return requestUrl.getHost();
 		} catch (MalformedURLException e) {
 			log.error(e);
 			return url;

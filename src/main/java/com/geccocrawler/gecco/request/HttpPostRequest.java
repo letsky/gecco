@@ -14,12 +14,12 @@ public class HttpPostRequest extends AbstractHttpRequest {
 	
 	public HttpPostRequest() {
 		super();
-		fields = new HashMap<String, String>();
+		fields = new HashMap<>();
 	}
 
 	public HttpPostRequest(String url) {
 		super(url);
-		fields = new HashMap<String, String>();
+		fields = new HashMap<>();
 	}
 	
 	public Map<String, String> getFields() {
@@ -39,6 +39,6 @@ public class HttpPostRequest extends AbstractHttpRequest {
 	}
 	
 	public static HttpPostRequest fromJson(JSONObject request) {
-		return (HttpPostRequest)JSON.toJavaObject(request, HttpPostRequest.class);
+		return JSON.toJavaObject(request, HttpPostRequest.class);
 	}
 }

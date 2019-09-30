@@ -17,23 +17,18 @@ import com.geccocrawler.gecco.request.HttpRequest;
  */
 public class UniqueSpiderScheduler implements Scheduler {
 	
-	private static Log log = LogFactory.getLog(UniqueSpiderScheduler.class);
+	private static final Log log = LogFactory.getLog(UniqueSpiderScheduler.class);
 	
-	private NavigableSet<SortHttpRequest> set;
+	private final NavigableSet<SortHttpRequest> set;
 	
 	public UniqueSpiderScheduler() {
-		set = new ConcurrentSkipListSet<SortHttpRequest>(new Comparator<SortHttpRequest>() {
-
-			@Override
-			public int compare(SortHttpRequest o1, SortHttpRequest o2) {
-				if(o1.getHttpRequest().hashCode() == o2.getHttpRequest().hashCode()) {
-					if(o1.getHttpRequest().equals(o2.getHttpRequest())) {
-						return 0;
-					}
+		set = new ConcurrentSkipListSet<>((o1, o2) -> {
+			if(o1.getHttpRequest().hashCode() == o2.getHttpRequest().hashCode()) {
+				if(o1.getHttpRequest().equals(o2.getHttpRequest())) {
+					return 0;
 				}
-				return (o1.getPriority() - o2.getPriority()) > 0 ? 1 : -1 ;
 			}
-			
+			return (o1.getPriority() - o2.getPriority()) > 0 ? 1 : -1 ;
 		});
 	}
 
@@ -65,9 +60,9 @@ public class UniqueSpiderScheduler implements Scheduler {
 	
 	private class SortHttpRequest {
 		
-		private long priority;
+		private final long priority;
 		
-		private HttpRequest httpRequest;
+		private final HttpRequest httpRequest;
 
 		public SortHttpRequest(long priority, HttpRequest httpRequest) {
 			super();

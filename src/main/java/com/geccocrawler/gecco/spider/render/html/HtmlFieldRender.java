@@ -25,7 +25,7 @@ public class HtmlFieldRender implements FieldRender {
 
 	@Override
 	public void render(HttpRequest request, HttpResponse response, BeanMap beanMap, SpiderBean bean) {
-		Map<String, Object> fieldMap = new HashMap<String, Object>();
+		Map<String, Object> fieldMap = new HashMap<>();
 		Set<Field> htmlFields = ReflectionUtils.getAllFields(bean.getClass(), ReflectionUtils.withAnnotation(HtmlField.class));
 		for (Field htmlField : htmlFields) {
 			Object value = injectHtmlField(request, response, htmlField, bean.getClass());

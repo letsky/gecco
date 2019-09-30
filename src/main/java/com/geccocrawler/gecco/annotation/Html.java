@@ -27,5 +27,5 @@ public @interface Html {
 	 * @author LiuJunGuang
 	 * @return 是否取外部Html
 	 */
-	public boolean outer() default false;
+    boolean outer() default false;
 }

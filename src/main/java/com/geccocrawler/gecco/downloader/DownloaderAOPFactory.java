@@ -15,11 +15,11 @@ public class DownloaderAOPFactory {
 	private Map<String, AfterDownload> afterDownloads;
 	
 	public DownloaderAOPFactory(Reflections reflections) {
-		this.beforeDownloads = new HashMap<String, BeforeDownload>();
-		this.afterDownloads = new HashMap<String, AfterDownload>();
+		this.beforeDownloads = new HashMap<>();
+		this.afterDownloads = new HashMap<>();
 		Set<Class<?>> classes = reflections.getTypesAnnotatedWith(GeccoClass.class);
 		for(Class<?> aopClass : classes) {
-			GeccoClass geccoClass = (GeccoClass)aopClass.getAnnotation(GeccoClass.class);
+			GeccoClass geccoClass = aopClass.getAnnotation(GeccoClass.class);
 			try {
 				Class<?>[] geccoClasses = geccoClass.value();
 				for(Class<?> c : geccoClasses) {

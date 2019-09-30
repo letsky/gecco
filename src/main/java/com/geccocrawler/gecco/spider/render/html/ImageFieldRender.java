@@ -52,8 +52,7 @@ public class ImageFieldRender implements FieldRender {
 		if(value instanceof Collection) {
 			Collection<Object> collection = (Collection<Object>)value;
 			for(Object item : collection) {
-				String imgUrl = downloadImage(request, field, item.toString());
-				item = imgUrl;
+				item = downloadImage(request, field, item.toString());
 			}
 			return collection;
 		} else {

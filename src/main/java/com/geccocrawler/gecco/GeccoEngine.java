@@ -3,7 +3,7 @@ package com.geccocrawler.gecco;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -45,11 +45,11 @@ import com.google.common.io.Resources;
  */
 public class GeccoEngine<V> extends Thread implements Callable<V> {
 
-	private static Log log = LogFactory.getLog(GeccoEngine.class);
+	private static final Log log = LogFactory.getLog(GeccoEngine.class);
 
 	private Date startTime;
 
-	private List<HttpRequest> startRequests = new ArrayList<HttpRequest>();
+	private final List<HttpRequest> startRequests = new ArrayList<HttpRequest>();
 
 	private Scheduler scheduler;
 
@@ -292,7 +292,7 @@ public class GeccoEngine<V> extends Thread implements Callable<V> {
 			URL url = Resources.getResource("starts.json");
 			File file = new File(url.getPath());
 			if (file.exists()) {
-				String json = Files.toString(file, Charset.forName("UTF-8"));
+				String json = Files.toString(file, StandardCharsets.UTF_8);
 				List<StartRequestList> list = JSON.parseArray(json, StartRequestList.class);
 				for (StartRequestList start : list) {
 					start(start.toRequest());

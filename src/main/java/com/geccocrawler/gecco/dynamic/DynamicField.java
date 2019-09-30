@@ -10,11 +10,11 @@ public interface DynamicField {
 	 * 
 	 * @return DynamicField
 	 */
-	public DynamicField request();
+    DynamicField request();
 	
-	public DynamicField requestParameter(String param);
+	DynamicField requestParameter(String param);
 	
-	public DynamicField requestParameter();
+	DynamicField requestParameter();
 
 	/**
 	 * replace by csspath
@@ -22,39 +22,39 @@ public interface DynamicField {
 	 * @return DynamicField
 	 */
 	@Deprecated
-	public DynamicField htmlField(String cssPath);
+    DynamicField htmlField(String cssPath);
 	
-	public DynamicField csspath(String cssPath);
+	DynamicField csspath(String cssPath);
 	
-	public DynamicField text(boolean own);
+	DynamicField text(boolean own);
 	
-	public DynamicField text();
+	DynamicField text();
 	
-	public DynamicField html(boolean outer);
+	DynamicField html(boolean outer);
 	
-	public DynamicField href(boolean click, String... value);
+	DynamicField href(boolean click, String... value);
 	
-	public DynamicField href(String... value);
+	DynamicField href(String... value);
 	
-	public DynamicField image(String download, String... value);
+	DynamicField image(String download, String... value);
 	
-	public DynamicField image();
+	DynamicField image();
 	
-	public DynamicField attr(String value);
+	DynamicField attr(String value);
 	
-	public DynamicField ajax(String url);
+	DynamicField ajax(String url);
 	
-	public DynamicField jsvar(String var, String jsonpath);
+	DynamicField jsvar(String var, String jsonpath);
 	
-	public DynamicField jsvar(String var);
+	DynamicField jsvar(String var);
 	
-	public DynamicField jsonpath(String value);
+	DynamicField jsonpath(String value);
 	
-	public DynamicField renderName(String value);
+	DynamicField renderName(String value);
 	
-	public DynamicBean build();
+	DynamicBean build();
 
-	public DynamicField customAnnotation(Annotation annotation);
+	DynamicField customAnnotation(Annotation annotation);
 	
-	public ConstPool getConstPool();
+	ConstPool getConstPool();
 }

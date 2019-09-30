@@ -63,16 +63,14 @@ public class HtmlParser {
 			return Conversion.getValue(field.getType(), value);
 		} else if (field.isAnnotationPresent(Image.class)) {// @Image
 			Image image = field.getAnnotation(Image.class);
-			String imageSrc = $image(selector, image.value());
 			/*String localPath = DownloadImage.download(image.download(), imageSrc);
 			if (StringUtils.isNotEmpty(localPath)) {
 				return localPath;
 			}*/
-			return imageSrc;
+			return $image(selector, image.value());
 		} else if (field.isAnnotationPresent(Href.class)) {// @Href
 			Href href = field.getAnnotation(Href.class);
-			String url = $href(selector, href.value());
-			return url;
+			return $href(selector, href.value());
 		} else if (field.isAnnotationPresent(Attr.class)) {// @Attr
 			Attr attr = field.getAnnotation(Attr.class);
 			String name = attr.value();
@@ -286,9 +284,7 @@ public class HtmlParser {
 			String rege = "<\\s*(thead|tbody|tr|td|th)[\\s\\S]+";
 			Pattern pattern = Pattern.compile(rege);
 			Matcher matcher = pattern.matcher(content);
-			if (matcher.matches()) {
-				return true;
-			}
+			return matcher.matches();
 		}
 		return false;
 	}

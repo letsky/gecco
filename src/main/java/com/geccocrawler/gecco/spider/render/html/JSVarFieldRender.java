@@ -34,7 +34,7 @@ import net.sf.cglib.beans.BeanMap;
  */
 public class JSVarFieldRender implements FieldRender {
 
-	private static Log log = LogFactory.getLog(JSVarFieldRender.class);
+	private static final Log log = LogFactory.getLog(JSVarFieldRender.class);
 
 	@Override
 	@SuppressWarnings({ "unchecked" })
@@ -89,15 +89,13 @@ public class JSVarFieldRender implements FieldRender {
 			}
 			// 将json对象转换为javabean属性
 			try {
-				Object value = Conversion.getValue(clazz, src);
-				return value;
+				return Conversion.getValue(clazz, src);
 			} catch (Exception e) {
 				log.error("field [" + field.getName() + "] conversion error, value=" + src);
 			}
 		} else if (jsObj instanceof Boolean || jsObj instanceof Number || jsObj instanceof String) {
 			try {
-				Object value = Conversion.getValue(clazz, jsObj);
-				return value;
+				return Conversion.getValue(clazz, jsObj);
 			} catch (Exception e) {
 				log.error("field [" + field.getName() + "] conversion error, value=" + jsObj);
 			}

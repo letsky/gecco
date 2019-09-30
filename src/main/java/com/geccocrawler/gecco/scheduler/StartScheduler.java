@@ -15,7 +15,7 @@ public class StartScheduler implements Scheduler {
 	private LinkedBlockingQueue<HttpRequest> startQueue;
 	
 	public StartScheduler() {
-		startQueue = new LinkedBlockingQueue<HttpRequest>();
+		startQueue = new LinkedBlockingQueue<>();
 	}
 
 	@Override

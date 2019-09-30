@@ -4,45 +4,45 @@ import java.util.Map;
 
 public interface HttpRequest extends Cloneable {
 	
-	public String getUrl();
+	String getUrl();
 	
-	public void setUrl(String url);
+	void setUrl(String url);
 	
-	public void addParameter(String name, String value);
+	void addParameter(String name, String value);
 	
-	public void setParameters(Map<String, String> parameters);
+	void setParameters(Map<String, String> parameters);
 	
-	public String getParameter(String name);
+	String getParameter(String name);
 	
-	public Map<String, String> getParameters();
+	Map<String, String> getParameters();
 	
-	public void addHeader(String name, String value);
+	void addHeader(String name, String value);
 	
-	public Map<String, String> getHeaders();
+	Map<String, String> getHeaders();
 	
-	public void clearHeader();
+	void clearHeader();
 
-	public void refer(String refer);
+	void refer(String refer);
 	
-	public String getCharset();
+	String getCharset();
 	
-	public void setCharset(String charset);
+	void setCharset(String charset);
 	
-	public void setForceUseCharset(boolean forceUseCharset);
+	void setForceUseCharset(boolean forceUseCharset);
 	
-	public boolean isForceUseCharset();
+	boolean isForceUseCharset();
 	
-	public HttpRequest subRequest(String url);
+	HttpRequest subRequest(String url);
 	
-	public Map<String, String> getCookies();
+	Map<String, String> getCookies();
 	
-	public void addCookie(String name, String value);
+	void addCookie(String name, String value);
 	
-	public String getCookie(String name);
+	String getCookie(String name);
 	
-	public void clearCookie();
+	void clearCookie();
 
-	public long getPriority();
+	long getPriority();
 	
-	public void setPriority(long prio);
+	void setPriority(long prio);
 }

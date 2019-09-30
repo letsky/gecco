@@ -36,7 +36,7 @@ import javassist.bytecode.annotation.StringMemberValue;
  */
 public class JavassistDynamicField implements DynamicField {
 	
-	private static Log log = LogFactory.getLog(JavassistDynamicField.class);
+	private static final Log log = LogFactory.getLog(JavassistDynamicField.class);
 	
 	private DynamicBean dynamicBean;
 	

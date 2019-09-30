@@ -24,6 +24,6 @@ public interface CustomFieldRender {
 	 * @param bean 已经注入后的SpiderBean
 	 * @param field 需要注入的Field
 	 */
-	public void render(HttpRequest request, HttpResponse response, BeanMap beanMap, SpiderBean bean, Field field);
+    void render(HttpRequest request, HttpResponse response, BeanMap beanMap, SpiderBean bean, Field field);
 
 }

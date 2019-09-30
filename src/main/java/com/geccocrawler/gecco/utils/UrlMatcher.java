@@ -2,10 +2,8 @@ package com.geccocrawler.gecco.utils;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,10 +13,10 @@ import org.apache.commons.logging.LogFactory;
 
 public class UrlMatcher {
 
-	private static Log log = LogFactory.getLog(UrlMatcher.class);
+	private static final Log log = LogFactory.getLog(UrlMatcher.class);
 	
 	public static String replaceParams(String regex, String name, String value) {
-		Map<String, String> map = new HashMap<String, String>(1);
+		Map<String, String> map = new HashMap<>(1);
 		map.put(name, value);
 		return replaceParams(regex, map);
 	}
@@ -28,7 +26,7 @@ public class UrlMatcher {
 	}
 	
 	public static String replaceFields(String regex, String name, String value) {
-		Map<String, String> map = new HashMap<String, String>(1);
+		Map<String, String> map = new HashMap<>(1);
 		map.put(name, value);
 		return replaceFields(regex, map);
 	}
@@ -91,12 +89,12 @@ public class UrlMatcher {
 			Pattern pattern2 = Pattern.compile(regex2);
 			Matcher matcher2 = pattern2.matcher(url);
 			if(matcher2.matches()) {
-				Map<String, String> params = new HashMap<String, String>(names.size());
+				Map<String, String> params = new HashMap<>(names.size());
 				for(int i = 1; i <= matcher2.groupCount(); i++) {
 					String value = matcher2.group(i);
 					//boolean x = matcher2.requireEnd();
 					try {
-						value = URLDecoder.decode(value, "UTF-8");
+						value = URLDecoder.decode(value, StandardCharsets.UTF_8.name());
 					} catch (UnsupportedEncodingException e) {
 						e.printStackTrace();
 					}
@@ -107,7 +105,7 @@ public class UrlMatcher {
 		} else {
 			//如果没有变量，返回空map
 			if(url.equals(regex)) {
-				return new HashMap<String, String>(0);
+				return Collections.emptyMap();
 			}
 		}
 		//适配失败返回null

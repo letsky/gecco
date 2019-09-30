@@ -19,13 +19,13 @@ import com.geccocrawler.gecco.request.HttpRequest;
 @Deprecated
 public class FIFOScheduler implements Scheduler {
 	
-	private static Log log = LogFactory.getLog(FIFOScheduler.class);
+	private static final Log log = LogFactory.getLog(FIFOScheduler.class);
 
-	private LinkedBlockingQueue<HttpRequest> starQueue;
+	private final LinkedBlockingQueue<HttpRequest> starQueue;
 	
-	private ConcurrentLinkedQueue<HttpRequest> queue;
+	private final ConcurrentLinkedQueue<HttpRequest> queue;
 	
-	private ReentrantLock outLock;
+	private final ReentrantLock outLock;
 	
 	public FIFOScheduler() {
 		starQueue = new LinkedBlockingQueue<HttpRequest>();

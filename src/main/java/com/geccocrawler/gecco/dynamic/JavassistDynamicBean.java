@@ -31,13 +31,13 @@ import javassist.bytecode.annotation.StringMemberValue;
  */
 public class JavassistDynamicBean implements DynamicBean {
 
-	private static Log log = LogFactory.getLog(JavassistDynamicBean.class);
+	private static final Log log = LogFactory.getLog(JavassistDynamicBean.class);
 
 	public static final String HtmlBean = "html";
 
 	public static final String JsonBean = "json";
 
-	private static ClassPool pool;
+	private static final ClassPool pool;
 	static {
 		pool = ClassPool.getDefault();
 		pool.insertClassPath(new ClassClassPath(JavassistDynamicBean.class));

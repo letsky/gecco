@@ -30,7 +30,7 @@ import com.google.common.io.Resources;
  */
 public class FileProxys implements Proxys {
 	
-	private static Log log = LogFactory.getLog(FileProxys.class);
+	private static final Log log = LogFactory.getLog(FileProxys.class);
 	
 	private ConcurrentLinkedQueue<Proxy> proxyQueue;
 	

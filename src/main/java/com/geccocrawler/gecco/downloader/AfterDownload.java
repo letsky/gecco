@@ -5,6 +5,6 @@ import com.geccocrawler.gecco.response.HttpResponse;
 
 public interface AfterDownload {
 	
-	public void process(HttpRequest request, HttpResponse response);
+	void process(HttpRequest request, HttpResponse response);
 
 }

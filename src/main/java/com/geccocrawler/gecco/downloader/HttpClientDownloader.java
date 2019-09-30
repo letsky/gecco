@@ -64,11 +64,11 @@ import com.geccocrawler.gecco.utils.UrlUtils;
 @com.geccocrawler.gecco.annotation.Downloader("httpClientDownloader")
 public class HttpClientDownloader extends AbstractDownloader {
 	
-	private static Log log = LogFactory.getLog(HttpClientDownloader.class);
+	private static final Log log = LogFactory.getLog(HttpClientDownloader.class);
 	
 	private CloseableHttpClient httpClient;
 	
-	private HttpClientContext cookieContext;
+	private final HttpClientContext cookieContext;
 	
 	public HttpClientDownloader() {
 		
@@ -258,9 +258,6 @@ public class HttpClientDownloader extends AbstractDownloader {
 		if(contentType == null) {
 			return false;
 		}
-		if(contentType.toLowerCase().startsWith("image")) {
-			return true;
-		}
-		return false;
+		return contentType.toLowerCase().startsWith("image");
 	}
 }

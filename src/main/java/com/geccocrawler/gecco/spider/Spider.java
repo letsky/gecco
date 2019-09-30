@@ -28,7 +28,7 @@ import com.geccocrawler.gecco.spider.render.Render;
  */
 public class Spider implements Runnable {
 	
-	private static Log log = LogFactory.getLog(Spider.class);
+	private static final Log log = LogFactory.getLog(Spider.class);
 	
 	private CountDownLatch pauseCountDown;
 	
@@ -36,7 +36,7 @@ public class Spider implements Runnable {
 	
 	private volatile boolean pause;
 	
-	private GeccoEngine engine;
+	private final GeccoEngine engine;
 	
 	private Scheduler spiderScheduler;
 	
@@ -195,8 +195,7 @@ public class Spider implements Runnable {
 	 * @return
 	 */
 	private HttpResponse defaultDownload(HttpRequest request) throws DownloadException {
-		HttpResponse response = download(null, request);
-		return response;
+		return download(null, request);
 	}
 	
 	private HttpResponse download(SpiderBeanContext context, HttpRequest request) throws DownloadException {

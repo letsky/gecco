@@ -22,7 +22,7 @@ import com.google.common.io.Files;
  */
 public class DownloadImage {
 	
-	private static Log log = LogFactory.getLog(DownloadImage.class);
+	private static final Log log = LogFactory.getLog(DownloadImage.class);
 	
 	/**
 	 * 下载图片到指定目录

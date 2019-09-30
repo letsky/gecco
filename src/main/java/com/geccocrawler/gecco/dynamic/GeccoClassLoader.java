@@ -39,12 +39,12 @@ public class GeccoClassLoader extends ClassLoader {
 	}
 	
 	public GeccoClassLoader() {
-		classes = new HashMap<String, Class<?>>();
+		classes = new HashMap<>();
 	}
 	
 	public GeccoClassLoader(ClassLoader parent) {
 		super(parent);
-		classes = new HashMap<String, Class<?>>();
+		classes = new HashMap<>();
 	}
 
 	@Override

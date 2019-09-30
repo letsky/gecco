@@ -13,10 +13,10 @@ public class CustomFieldRenderFactory {
 	private Map<String, CustomFieldRender> map;
 	
 	public CustomFieldRenderFactory(Reflections reflections) {
-		this.map = new HashMap<String, CustomFieldRender>();
+		this.map = new HashMap<>();
 		Set<Class<?>> classes = reflections.getTypesAnnotatedWith(FieldRenderName.class);
 		for(Class<?> clazz : classes) {
-			FieldRenderName fieldRenderName = (FieldRenderName)clazz.getAnnotation(FieldRenderName.class);
+			FieldRenderName fieldRenderName = clazz.getAnnotation(FieldRenderName.class);
 			try {
 				map.put(fieldRenderName.value(), (CustomFieldRender)clazz.newInstance());
 			} catch(Exception ex) {

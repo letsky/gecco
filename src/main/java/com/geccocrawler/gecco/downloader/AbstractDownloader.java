@@ -6,6 +6,7 @@ import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.SocketTimeoutException;
+import java.nio.charset.StandardCharsets;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,7 +16,7 @@ import org.apache.http.conn.ConnectTimeoutException;
 
 public abstract class AbstractDownloader implements Downloader {
 	
-	private static Log log = LogFactory.getLog(AbstractDownloader.class);
+	private static final Log log = LogFactory.getLog(AbstractDownloader.class);
 
 	private static final Pattern charsetPattern = Pattern.compile("(?i)\\bcharset=\\s*\"?([^\\s;\"]*)");
 
@@ -39,7 +40,7 @@ public abstract class AbstractDownloader implements Downloader {
 		}
 		if(charset == null) {
 			//默认采用utf-8
-			charset = "UTF-8";
+			charset = StandardCharsets.UTF_8.name();
 		}
 		return charset;
 	}
@@ -52,7 +53,7 @@ public abstract class AbstractDownloader implements Downloader {
 	 * @throws IOException
 	 */
 	protected ByteArrayInputStream toByteInputStream(InputStream in) throws IOException {
-		ByteArrayInputStream bis = null;
+		ByteArrayInputStream bis;
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
 		try {
 			byte[] b = new byte[1024];

@@ -16,9 +16,9 @@ import com.geccocrawler.gecco.request.HttpRequest;
 @Deprecated
 public class SpiderScheduler implements Scheduler {
 	
-	private static Log log = LogFactory.getLog(SpiderScheduler.class);
+	private static final Log log = LogFactory.getLog(SpiderScheduler.class);
 	
-	private ConcurrentLinkedQueue<HttpRequest> queue;
+	private final ConcurrentLinkedQueue<HttpRequest> queue;
 	
 	public SpiderScheduler() {
 		queue = new ConcurrentLinkedQueue<HttpRequest>();

@@ -88,8 +88,8 @@ public class SpiderBeanFactory {
 		} else {
 			this.pipelineFactory = new DefaultPipelineFactory(reflections);
 		}
-		this.spiderBeans = new ConcurrentHashMap<String, Class<? extends SpiderBean>>();
-		this.spiderBeanContexts = new ConcurrentHashMap<String, SpiderBeanContext>();
+		this.spiderBeans = new ConcurrentHashMap<>();
+		this.spiderBeanContexts = new ConcurrentHashMap<>();
 		loadSpiderBean(reflections);
 	}
 
@@ -160,10 +160,8 @@ public class SpiderBeanFactory {
 				}
 			}
 		}
-		if (commonSpider != null) {// 如果包含通用爬虫，返回通用爬虫
-			return commonSpider;
-		}
-		return null;
+		// 如果包含通用爬虫，返回通用爬虫
+		return commonSpider;
 	}
 
 	public SpiderBeanContext getContext(Class<? extends SpiderBean> spider) {
@@ -204,7 +202,7 @@ public class SpiderBeanFactory {
 	@SuppressWarnings({ "rawtypes" })
 	private void pipelineContext(SpiderBeanContext context, String[] pipelineNames) {
 		if (pipelineNames != null && pipelineNames.length > 0) {
-			List<Pipeline> pipelines = new ArrayList<Pipeline>();
+			List<Pipeline> pipelines = new ArrayList<>();
 			for (String pipelineName : pipelineNames) {
 				if (StringUtils.isEmpty(pipelineName)) {
 					continue;

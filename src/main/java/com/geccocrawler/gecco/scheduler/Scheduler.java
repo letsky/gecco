@@ -10,8 +10,8 @@ import com.geccocrawler.gecco.request.HttpRequest;
  */
 public interface Scheduler {
 	
-	public HttpRequest out();
+	HttpRequest out();
 	
-	public void into(HttpRequest request);
+	void into(HttpRequest request);
 	
 }

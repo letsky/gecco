@@ -22,7 +22,7 @@ public class RequestParameterFieldRender implements FieldRender {
 	@Override
 	@SuppressWarnings({ "unchecked" })
 	public void render(HttpRequest request, HttpResponse response, BeanMap beanMap, SpiderBean bean) {
-		Map<String, Object> fieldMap = new HashMap<String, Object>();
+		Map<String, Object> fieldMap = new HashMap<>();
 		Set<Field> requestParameterFields = ReflectionUtils.getAllFields(bean.getClass(), ReflectionUtils.withAnnotation(RequestParameter.class));
 		for(Field field : requestParameterFields) {
 			RequestParameter requestParameter = field.getAnnotation(RequestParameter.class);

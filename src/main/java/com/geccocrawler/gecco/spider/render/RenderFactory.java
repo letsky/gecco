@@ -14,7 +14,7 @@ public abstract class RenderFactory {
 	
 	public RenderFactory(Reflections reflections) {
 		CustomFieldRenderFactory customFieldRenderFactory = new CustomFieldRenderFactory(reflections);
-		renders = new HashMap<RenderType, Render>();
+		renders = new HashMap<>();
 		
 		AbstractRender htmlRender = createHtmlRender();
 		htmlRender.setCustomFieldRenderFactory(customFieldRenderFactory);

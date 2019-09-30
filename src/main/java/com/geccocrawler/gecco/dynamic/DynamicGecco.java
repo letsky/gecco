@@ -21,6 +21,6 @@ public class DynamicGecco {
 	}
 	
 	public static void unregister(Class<?> clazz) {
-		new JavassistDynamicBean(clazz.getName()).unloadClass();;
-	}
+		new JavassistDynamicBean(clazz.getName()).unloadClass();
+    }
 }

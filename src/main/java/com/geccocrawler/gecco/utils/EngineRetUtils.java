@@ -2,7 +2,7 @@ package com.geccocrawler.gecco.utils;
 
 import com.geccocrawler.gecco.spider.SpiderThreadLocal;
 
-public class EngineRetUtil{
+public class EngineRetUtils {
 
     public static Object getRet(){
         return SpiderThreadLocal.get().getEngine().getRet();

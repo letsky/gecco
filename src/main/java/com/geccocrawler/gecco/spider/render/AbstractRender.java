@@ -27,17 +27,17 @@ import net.sf.cglib.beans.BeanMap;
  */
 public abstract class AbstractRender implements Render {
 	
-	private static Log log = LogFactory.getLog(AbstractRender.class);
+	private static final Log log = LogFactory.getLog(AbstractRender.class);
 
 	/**
 	 * request请求的注入
 	 */
-	private RequestFieldRender requestFieldRender;
+	private final RequestFieldRender requestFieldRender;
 
 	/**
 	 * request参数的注入
 	 */
-	private RequestParameterFieldRender requestParameterFieldRender;
+	private final RequestParameterFieldRender requestParameterFieldRender;
 
 	/**
 	 * 自定义注入

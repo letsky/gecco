@@ -13,9 +13,8 @@ public class DefaultPipelineFactory implements PipelineFactory {
 
 	private Map<String, Pipeline<? extends SpiderBean>> pipelines;
 
-	@SuppressWarnings({ "unchecked" })
 	public DefaultPipelineFactory(Reflections reflections) {
-		this.pipelines = new HashMap<String, Pipeline<? extends SpiderBean>>();
+		this.pipelines = new HashMap<>();
 		Set<Class<?>> pipelineClasses = reflections.getTypesAnnotatedWith(PipelineName.class);
 		for (Class<?> pipelineClass : pipelineClasses) {
 			PipelineName spiderFilter = pipelineClass.getAnnotation(PipelineName.class);

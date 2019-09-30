@@ -13,7 +13,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.reflections.ReflectionUtils;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONException;
 import com.geccocrawler.gecco.annotation.JSONPath;
 import com.geccocrawler.gecco.request.HttpRequest;
@@ -36,7 +35,7 @@ public class JsonFieldRender implements FieldRender {
 	@Override
 	@SuppressWarnings({ "unchecked" })
 	public void render(HttpRequest request, HttpResponse response, BeanMap beanMap, SpiderBean bean) {
-		Map<String, Object> fieldMap = new HashMap<String, Object>();
+		Map<String, Object> fieldMap = new HashMap<>();
 		Set<Field> jsonPathFields = ReflectionUtils.getAllFields(bean.getClass(), ReflectionUtils.withAnnotation(JSONPath.class));
 		String jsonStr = response.getContent();
 		jsonStr = jsonp2Json(jsonStr);
@@ -117,14 +116,13 @@ public class JsonFieldRender implements FieldRender {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private SpiderBean spiderBeanRender(Object src, Class genericClass, HttpRequest request) {
 		HttpResponse subResponse = HttpResponse.createSimple(src.toString());
-		Render render = null;
+		Render render;
 		if(ReflectUtils.haveSuperType(genericClass, JsonBean.class)) {
 			render = RenderContext.getRender(RenderType.JSON);
 		} else {
 			render = RenderContext.getRender(RenderType.HTML);
 		}
-		SpiderBean subBean = render.inject(genericClass, request, subResponse);
-		return subBean;
+		return render.inject(genericClass, request, subResponse);
 	}
 
 	private Object objectRender(Object src, Field field, String jsonPath, Object json) {
@@ -148,7 +146,7 @@ public class JsonFieldRender implements FieldRender {
 		jsonp = StringUtils.trim(jsonp);
 
 		if(jsonp.startsWith("try")||StringUtils.endsWith(jsonp, ")")){
-			if(jsonp.indexOf("catch")!=-1){
+			if(jsonp.contains("catch")){
 				jsonp = jsonp.substring(0,jsonp.indexOf("catch"));
 			}
 			int fromIndex = jsonp.indexOf('(');

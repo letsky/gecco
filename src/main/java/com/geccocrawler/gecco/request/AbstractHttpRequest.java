@@ -28,9 +28,9 @@ public abstract class AbstractHttpRequest implements HttpRequest, Comparable<Htt
 	private long priority;
 	
 	public AbstractHttpRequest() {
-		this.parameters = new HashMap<String, String>(1);
-		this.headers = new HashMap<String, String>(1);
-		this.cookies = new HashMap<String, String>(1);
+		this.parameters = new HashMap<>(1);
+		this.headers = new HashMap<>(1);
+		this.cookies = new HashMap<>(1);
 	}
 	
 	public AbstractHttpRequest(String url) {
@@ -158,8 +158,8 @@ public abstract class AbstractHttpRequest implements HttpRequest, Comparable<Htt
 	}
 
 	@Override
-	public void setPriority(long prio) {
-		this.priority = prio;
+	public void setPriority(long priority) {
+		this.priority = priority;
 	}
 
 	@Override
@@ -177,15 +177,14 @@ public abstract class AbstractHttpRequest implements HttpRequest, Comparable<Htt
 	 */
 	@Override
 	public int compareTo(HttpRequest o) {
-		return this.priority > o.getPriority() ? 1 : this.priority < o.getPriority() ? -1 : 0;
+		return Long.compare(this.priority, o.getPriority());
 	}
-	
+
 	@Override
 	protected Object clone() throws CloneNotSupportedException {
 		//通过json的序列号和反序列化实现对象的深度clone
 		String text = JSON.toJSONString(this); //序列化
-		HttpRequest request = JSON.parseObject(text, this.getClass()); //反序列化
-		return request;
+		return JSON.parseObject(text, this.getClass());
 	}
 
 	@Override

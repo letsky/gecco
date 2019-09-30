@@ -14,26 +14,26 @@ public interface EventListener {
 	 * 
 	 * @param ge GeccoEngine
 	 */
-	public void onStart(GeccoEngine ge);
+    void onStart(GeccoEngine ge);
 
 	/**
 	 * 暂停时，回调
 	 * 
 	 * @param ge GeccoEngine
 	 */
-	public void onPause(GeccoEngine ge);
+    void onPause(GeccoEngine ge);
 
 	/**
 	 * 恢复抓取时，回调
 	 * 
 	 * @param ge GeccoEngine
 	 */
-	public void onRestart(GeccoEngine ge);
+    void onRestart(GeccoEngine ge);
 
 	/**
 	 * 引擎停止时，回调
 	 * 
 	 * @param ge GeccoEngine
 	 */
-	public void onStop(GeccoEngine ge);
+    void onStop(GeccoEngine ge);
 }

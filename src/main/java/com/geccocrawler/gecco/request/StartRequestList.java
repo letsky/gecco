@@ -16,9 +16,9 @@ public class StartRequestList {
 	private Map<String, String> posts;
 	
 	public StartRequestList() {
-		cookies = new HashMap<String, String>();
-		headers = new HashMap<String, String>();
-		posts = new HashMap<String, String>();
+		cookies = new HashMap<>();
+		headers = new HashMap<>();
+		posts = new HashMap<>();
 	}
 	
 	public HttpRequest toRequest() {

@@ -20,8 +20,7 @@ public class NoLoopStartScheduler implements Scheduler {
 
 	@Override
 	public HttpRequest out() {
-		HttpRequest request = queue.poll();
-		return request;
+		return queue.poll();
 	}
 
 	@Override

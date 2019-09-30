@@ -35,7 +35,7 @@ public class AjaxFieldRender implements FieldRender {
 	@Override
 	@SuppressWarnings("unchecked")
 	public void render(HttpRequest request, HttpResponse response, BeanMap beanMap, SpiderBean bean) {
-		Map<String, Object> fieldMap = new HashMap<String, Object>();
+		Map<String, Object> fieldMap = new HashMap<>();
 		Set<Field> ajaxFields = ReflectionUtils.getAllFields(bean.getClass(), ReflectionUtils.withAnnotation(Ajax.class));
 		for (Field ajaxField : ajaxFields) {
 			Object value = injectAjaxField(request, beanMap, ajaxField);

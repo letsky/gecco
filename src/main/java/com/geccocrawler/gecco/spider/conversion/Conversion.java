@@ -8,7 +8,7 @@ import java.util.Map;
 public class Conversion {
 
 	@SuppressWarnings({ "rawtypes" })
-	private static final Map<Class<?>, TypeHandle> TYPE_HANDLERS = new HashMap<Class<?>, TypeHandle>();
+	private static final Map<Class<?>, TypeHandle> TYPE_HANDLERS = new HashMap<>();
 	static {
 		// int, float, long, double, java.util.Date, boolean, String
 		TYPE_HANDLERS.put(Integer.class, new IntegerTypeHandle());

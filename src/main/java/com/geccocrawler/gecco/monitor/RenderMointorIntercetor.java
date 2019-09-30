@@ -13,8 +13,7 @@ public class RenderMointorIntercetor implements MethodInterceptor {
 	public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
 		if(method.getName().equals("inject")) {
 			try {
-				Object o = proxy.invokeSuper(obj, args);
-				return o;
+                return proxy.invokeSuper(obj, args);
 			} catch(RenderException ex) {
 				RenderMonitor.incrException(ex.getSpiderBeanClass().getName());
 				throw ex;

@@ -14,7 +14,7 @@ import com.geccocrawler.gecco.spider.SpiderThreadLocal;
  */
 public class RenderException extends Exception {
 	
-	private static Log log = LogFactory.getLog(RenderException.class);
+	private static final Log log = LogFactory.getLog(RenderException.class);
 
 	private static final long serialVersionUID = 5034687491589622988L;
 

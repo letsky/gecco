@@ -8,7 +8,7 @@ package com.geccocrawler.gecco.spider;
  */
 public class SpiderThreadLocal {
 	
-	private static ThreadLocal<Spider> spiderThreadLocal = new ThreadLocal<Spider>();
+	private static ThreadLocal<Spider> spiderThreadLocal = new ThreadLocal<>();
 	
 	public static void set(Spider spider) {
 		spiderThreadLocal.set(spider);
