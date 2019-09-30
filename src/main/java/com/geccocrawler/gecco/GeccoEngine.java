@@ -276,7 +276,7 @@ public class GeccoEngine<V> extends Thread implements Callable<V> {
 			GeccoJmx.export(jmxPrefix == null ? classpath : jmxPrefix);
 		}
 		// 非循环模式等待线程执行完毕后关闭
-		closeUnitlComplete();
+		closeUntilComplete();
 	}
 
 	@Override
@@ -372,7 +372,7 @@ public class GeccoEngine<V> extends Thread implements Callable<V> {
 	/**
 	 * 非循环模式等待线程执行完毕后关闭
 	 */
-	public void closeUnitlComplete() {
+	public void closeUntilComplete() {
 		if (!loop) {
 			try {
 				cdl.await();
